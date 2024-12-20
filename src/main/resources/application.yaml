@@ -13,3 +13,6 @@ spring:
     database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
       ddl-auto: none
+
+server:
+  port: 8081

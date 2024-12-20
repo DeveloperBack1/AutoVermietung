@@ -15,7 +15,7 @@ public class CarController {
         this.carService = carService;
     }
 
-    @GetMapping
+    @GetMapping("/getAll")
     public List<Car> getAllCars() {
         return carService.getAllCars();
     }
