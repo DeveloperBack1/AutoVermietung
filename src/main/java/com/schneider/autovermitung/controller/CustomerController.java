@@ -1,9 +1,10 @@
 package com.schneider.autovermitung.controller;
+
 import com.schneider.autovermitung.entity.Customer;
 import com.schneider.autovermitung.service.CustomerService;
 import org.springframework.web.bind.annotation.*;
 
-        import java.util.List;
+import java.util.List;
 
 @RestController
 @RequestMapping("/customers")

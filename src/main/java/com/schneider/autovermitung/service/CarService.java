@@ -1,4 +1,5 @@
 package com.schneider.autovermitung.service;
+
 import com.schneider.autovermitung.entity.Car;
 import com.schneider.autovermitung.repository.CarRepository;
 import org.springframework.stereotype.Service;
@@ -21,4 +22,3 @@ public class CarService {
         return carRepository.save(car);
     }
 }
-

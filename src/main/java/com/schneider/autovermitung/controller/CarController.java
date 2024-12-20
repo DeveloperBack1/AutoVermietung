@@ -1,9 +1,10 @@
 package com.schneider.autovermitung.controller;
+
 import com.schneider.autovermitung.entity.Car;
 import com.schneider.autovermitung.service.CarService;
 import org.springframework.web.bind.annotation.*;
 
-        import java.util.List;
+import java.util.List;
 
 @RestController
 @RequestMapping("/cars")
@@ -14,7 +15,7 @@ public class CarController {
         this.carService = carService;
     }
 
-    @GetMapping
+    @GetMapping("/getAll")
     public List<Car> getAllCars() {
         return carService.getAllCars();
     }
@@ -24,4 +25,3 @@ public class CarController {
         return carService.saveCar(car);
     }
 }
-
