@@ -1,5 +1,5 @@
 package com.schneider.autovermitung.controller;
-import com.schneider.autovermitung.entity.Customer;
+
 import com.schneider.autovermitung.entity.Rental;
 import com.schneider.autovermitung.service.RentalService;
 import org.springframework.web.bind.annotation.*;
@@ -19,17 +19,11 @@ public class RentalController {
     public List<Rental> getAllRentals() {
         return rentalService.getAllRentals();
     }
-    @PostMapping("/{carId}/customer/{customerId}")
-    public Rental rentCar(@PathVariable("carId") Long carId,
-                          @PathVariable("customerId") Customer customerId,
-                          @RequestBody Rental rental) {
-            return rentalService.rentCar(carId, customerId, rental);
+
+    @PostMapping("/{carId}/{customerId}")
+    public Rental rentCar(@PathVariable("carId") int carId,
+                          @PathVariable("customerId") int customerId) {
+        return rentalService.rentCar(carId, customerId);
 
     }
-
-
-//    @PostMapping("/{carId}/customer/{customerId}")
-//    public Rental rentCar(@PathVariable Long carId, @PathVariable Long customerId, @RequestBody Rental rental) {
-//        return rentalService.rentCar(carId, ((Long) customerId, rental);
-//    }
 }
