@@ -7,19 +7,25 @@ import com.schneider.autovermietung.service.CarService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
+import java.util.Optional;
+
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
 import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
+import static org.springframework.web.servlet.function.RequestPredicates.contentType;
+@SpringBootTest
 @WebMvcTest(CarController.class)
+
 class CarControllerTest {
 
 
@@ -65,5 +71,27 @@ class CarControllerTest {
 
 
     }
+
+    @Test
+    public void testGetCarById() throws Exception {
+
+    int id = 1;
+        // Mock the carService to return the Car object
+        when(carServiceMock.getCarById(anyInt())).thenReturn(new Car(1,"BMW",
+                "5", 20.5, true));
+
+        // Act & Assert: Perform GET request and verify response
+        mockMvc.perform(get("/cars/{id}",id).
+                        contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())  // Verify HTTP status is 200
+                .andExpect(jsonPath("$.id").value(1))
+                .andExpect(jsonPath("$.model").value("BMW"))
+                .andExpect(jsonPath("$.brand").value("5"))
+                .andExpect(jsonPath("$.pricePerDay").value(20.5))
+                .andExpect(jsonPath("$.available").value(true));
+    }
+
+
 }
+
 

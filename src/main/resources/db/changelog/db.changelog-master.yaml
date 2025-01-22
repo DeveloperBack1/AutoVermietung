@@ -1,0 +1,112 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-cars-table
+      author: developer
+      changes:
+        - createTable:
+            tableName: cars
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: model
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: brand
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: price_per_day
+                  type: DOUBLE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: available
+                  type: BOOLEAN
+                  defaultValueBoolean: true
+
+  - changeSet:
+      id: create-customers-table
+      author: developer
+      changes:
+        - createTable:
+            tableName: customers
+            columns:
+              - column:
+                  name: customer_id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+
+  - changeSet:
+      id: create-rentals-table
+      author: developer
+      changes:
+        - createTable:
+            tableName: rentals
+            columns:
+              - column:
+                  name: rental_id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: customer_id
+                  type: INT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_rental_customer
+                    references: customers(customer_id)
+                    onDelete: CASCADE
+              - column:
+                  name: car_id
+                  type: INT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_rental_car
+                    references: cars(id)
+                    onDelete: CASCADE
+              - column:
+                  name: start_date
+                  type: DATE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: end_date
+                  type: DATE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: total_cost
+                  type: DOUBLE
+                  constraints:
+                    nullable: false
+
+
+
+
+
+

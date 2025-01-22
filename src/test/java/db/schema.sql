@@ -19,7 +19,7 @@ CREATE TABLE customers
 -- Таблица для хранения информации об арендах
 CREATE TABLE rentals
 (
-   rental_id    INT AUTO_INCREMENT PRIMARY KEY,
+    rental_id    INT AUTO_INCREMENT PRIMARY KEY,
     customer_id INT NOT NULL,
     car_id    INT NOT NULL,
     start_date  DATE   NOT NULL,
@@ -28,6 +28,3 @@ CREATE TABLE rentals
     CONSTRAINT fk_rental_customer FOREIGN KEY (customer_id) REFERENCES customers (customer_id) ON DELETE CASCADE,
     CONSTRAINT fk_rental_car FOREIGN KEY (car_id) REFERENCES cars (id) ON DELETE CASCADE
 );
-
-
-
