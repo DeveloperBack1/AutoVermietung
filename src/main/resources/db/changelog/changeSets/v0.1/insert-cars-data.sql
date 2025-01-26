@@ -5,4 +5,3 @@ VALUES
     ('Corolla', 'Toyota', 60.0, TRUE),
     ('Mustang', 'Ford', 120.0, FALSE),
     ('X5', 'BMW', 200.0, TRUE);
-#

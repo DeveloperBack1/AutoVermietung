@@ -5,4 +5,3 @@ VALUES
     ('Charlie Brown', 'charlie.brown@example.com'),
     ('Diana Prince', 'diana.prince@example.com'),
     ('Ethan Hunt', 'ethan.hunt@example.com');
-

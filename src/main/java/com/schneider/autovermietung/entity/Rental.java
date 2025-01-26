@@ -4,18 +4,29 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
-@Entity
+import java.util.Objects;
 
 @Getter
 @Setter
-@ToString
-@EqualsAndHashCode
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name="rentals")
 public class Rental {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "rental_id")
     private int id;
+
+    @Column(name = "start_date")
+    private LocalDate startDate;
+
+    @Column(name = "end_date")
+    private LocalDate endDate;
+
+    @Column(name = "total_cost")
+    private double totalCost;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
@@ -25,52 +36,30 @@ public class Rental {
     @JoinColumn(name = "car_id")
     private Car car;
 
-    @Column(name = "start_date")
-    private LocalDate startDate;
-    @Column(name = "end_date")
-    private LocalDate endDate;
-    @Column(name = "total_cost")
-    private double totalCost;
-
-    public Rental() {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Rental rental = (Rental) o;
+        return id == rental.id && Double.compare(totalCost, rental.totalCost) == 0
+                && Objects.equals(startDate, rental.startDate)
+                && Objects.equals(endDate, rental.endDate)
+                && Objects.equals(customer, rental.customer);
     }
 
-    public LocalDate getStartDate() {
-        return startDate;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, startDate, endDate, totalCost, customer);
     }
 
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
+    @Override
+    public String toString() {
+        return "Rental{" +
+                "id=" + id +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", totalCost=" + totalCost +
+                ", customer=" + customer +
+                '}';
     }
-
-    public LocalDate getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
-
-    public double getTotalCost() {
-        return totalCost;
-    }
-
-    public void setTotalCost(double totalCost) {
-        this.totalCost = totalCost;
-    }
-
-    public Rental(int id, Customer customer, Car car, LocalDate startDate, LocalDate endDate, double totalCost) {
-        this.id = id;
-        this.customer = customer;
-        this.car = car;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.totalCost = totalCost;
-    }
-
-
-
-
 }
-
-
