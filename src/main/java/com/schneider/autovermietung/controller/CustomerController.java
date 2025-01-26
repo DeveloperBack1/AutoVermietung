@@ -1,19 +1,20 @@
 package com.schneider.autovermietung.controller;
+
 import com.schneider.autovermietung.entity.Customer;
 import com.schneider.autovermietung.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-        import java.util.List;
+import java.util.List;
 
 @RestController
 @RequestMapping("/customers")
 @RequiredArgsConstructor
 public class CustomerController {
-@Autowired
-    public final CustomerService customerService;
 
+    @Autowired
+    public final CustomerService customerService;
 
 
     // почему так работает странно?

@@ -80,7 +80,6 @@ databaseChangeLog:
                     nullable: false
                     foreignKeyName: fk_rental_customer
                     references: customers(customer_id)
-                    onDelete: CASCADE
               - column:
                   name: car_id
                   type: INT
@@ -88,7 +87,6 @@ databaseChangeLog:
                     nullable: false
                     foreignKeyName: fk_rental_car
                     references: cars(id)
-                    onDelete: CASCADE
               - column:
                   name: start_date
                   type: DATE
@@ -104,9 +102,3 @@ databaseChangeLog:
                   type: DOUBLE
                   constraints:
                     nullable: false
-
-
-
-
-
-

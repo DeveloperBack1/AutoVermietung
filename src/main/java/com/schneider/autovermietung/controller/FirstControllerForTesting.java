@@ -24,7 +24,5 @@ public class FirstControllerForTesting {
         }
         System.out.println("STATUS: " + response.getStatus());
         return "HELLO";
-
     }
-
 }
