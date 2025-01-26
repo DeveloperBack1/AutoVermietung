@@ -23,6 +23,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer getCustomerById(int id) {
+
         Optional<Customer> optionalCustomer = customerRepository.findById(id);
         if (!optionalCustomer.isPresent()) {
             throw new CustomerDoesntExistException(ErrorMessage.CUSTOMER_NOT_EXIST);

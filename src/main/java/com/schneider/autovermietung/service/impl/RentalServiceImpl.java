@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class RentalServiceImpl implements RentalService {
@@ -20,19 +21,12 @@ public class RentalServiceImpl implements RentalService {
     private final CarRepository carRepository;
     private final CustomerRepository customerRepository;
 
-//    public RentalService(RentalRepository rentalRepository, CarRepository carRepository) {
-//        this.rentalRepository = rentalRepository;
-//        this.carRepository = carRepository;
-//    }
+
 @Override
     public List<Rental> getAllRentals() {
         return rentalRepository.findAll();
     }
 
-//    @Override
-//    public Rental rentCar(Rental rental) {
-//        return null;
-//    }
 
 @Override
     public Rental rentCar(Integer carId, Customer customer, Rental rental) {

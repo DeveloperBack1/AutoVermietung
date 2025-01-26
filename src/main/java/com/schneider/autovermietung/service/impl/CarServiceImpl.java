@@ -15,9 +15,6 @@ public class CarServiceImpl implements CarService {
 
     private final CarRepository carRepository;
 
-//    public CarService(CarRepository carRepository) {
-//        this.carRepository = carRepository;
-//    }
 
     public Car getCarById(Integer id) {
         return carRepository.findById(id).orElse(new Car());
